@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Code Generator and Verifier</title>
+</head>
+<body>
+    <h1>Unique Code Generator and Verifier</h1>
+
+    <button onclick="generateCode()">Generate Unique Code</button>
+    <br>
+    <input type="text" id="verificationCode" placeholder="Enter Unique Code">
+    <button onclick="verifyCode()">Verify Unique Code</button>
+
+    <script>
+        async function generateCode() {
+            const response = await fetch('http://localhost:3000/generateUniqueCode', { method: 'POST' });
+            const data = await response.json();
+            alert('New Unique Code Generated: ' + data.code);
+        }
+
+        async function verifyCode() {
+            const code = document.getElementById('verificationCode').value;
+            const response = await fetch('http://localhost:3000/verifyUniqueCode', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code })
+            });
+            const data = await response.json();
+            if (data.isValid) {
+                alert('Valid Unique Code!');
+            } else {
+                alert('Invalid Unique Code!');
+            }
+        }
+    </script>
+</body>
+</html>
