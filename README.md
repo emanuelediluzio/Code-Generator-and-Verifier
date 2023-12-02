@@ -60,6 +60,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Inspiration: [Provide any relevant inspiration or resources]
-
 Feel free to customize this `README.md` according to your project's specific details and needs. Add information about project structure, deployment, or any other relevant details.
